@@ -8,7 +8,6 @@
   },
   "dependencies": {
     "async": "^0.9.0",
-    "bower": "^1.3.12",
     "coffee-script": "^1.7.1",
     "consolidate": "^0.10.0",
     "debug": "~0.8.1",
@@ -44,6 +43,6 @@
   },
   "scripts": {
     "start": "grunt serve",
-    "postinstall": "bower install && grunt prod --private=true"
+    "postinstall": "grunt prod --private=true"
   }
 }
