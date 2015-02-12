@@ -146,23 +146,23 @@ module.exports = function (grunt) {
 			html: {
 				src: [ 'build/**/*.html' ],
 				overwrite: true,
-				replacements: [ 
-					{ from: /href="\//g, to: 'href="' + baseUrl }, 
-					{ from: /src=\"\//g, to: 'src="' + baseUrl } 
+				replacements: [
+					{ from: /href="\//g, to: 'href="' + baseUrl },
+					{ from: /src=\"\//g, to: 'src="' + baseUrl }
 				]
 			},
 			css: {
 				src: [ 'build/**/*.css' ],
 				overwrite: true,
-				replacements: [ 
-					{ from: /url\("\//g, to: 'url(\"' + baseUrl }, 
-					{ from: /url\('\//g, to: 'url(\'' + baseUrl } 
+				replacements: [
+					{ from: /url\("\//g, to: 'url(\"' + baseUrl },
+					{ from: /url\('\//g, to: 'url(\'' + baseUrl }
 				]
 			},
 			googleFonts: {
 				src: [ 'build/**/*.html' ],
 				overwrite: true,
-				replacements: [ 
+				replacements: [
 					{ from: /http:\/\/fonts\.googleapis\.com/g, to: "https://fonts.googleapis.com" } ]
 			}
 		},
@@ -244,7 +244,7 @@ module.exports = function (grunt) {
 			},
 			'standalone': {
 				root: './build',
-				port: 7000,
+				port: process.env.PORT,
 				host: "127.0.0.1",
 				showDir: true,
 				autoIndex: true,
@@ -298,5 +298,4 @@ module.exports = function (grunt) {
 		'Starts HTTP server',
 		[ 'http-server:standalone' ]
 	);
-
 };
