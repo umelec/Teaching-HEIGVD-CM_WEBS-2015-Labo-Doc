@@ -245,7 +245,7 @@ module.exports = function (grunt) {
 			'standalone': {
 				root: './build',
 				port: process.env.PORT,
-				host: "127.0.0.1",
+				host: process.env.HOST,
 				showDir: true,
 				autoIndex: true,
 				defaultExt: "html",
