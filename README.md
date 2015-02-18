@@ -14,6 +14,15 @@ static site. The following [Node.js][node] stack is used:
 Note that apart from Markdown support within the RAML spec it also supports
 plain `.md` files that are compiled independently from the API documentation.
 
+## Authors
+ - fabrice Clerc
+ - Robert di Rosa
+
+## Link
+
+https://intense-bastion-5083.herokuapp.com/
+
+
 ## Quickstart
 
 ### Prerequisites
