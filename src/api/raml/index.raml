@@ -121,8 +121,175 @@ traits:
         204:
           body:
 
+/issue:
+
+  /issues:
+
+    get:
+      is: [auth: {roles: ''} ]
+      description: liste tous les problèmes
+      responses:
+        200:
+          body:
+            application/json:
+              example: |
+                {
+
+                }
+
+    post:
+      is: [auth: {roles: ''} ]
+      description: créer un problème
+      responses:
+        200:
+          body:
+            application/json:
+              example: |
+                {
+
+                }
+
+    /{id}:
+
+
+      get:
+        is: [auth: {roles: ''} ]
+        description: affiche un problème selon id
+        responses:
+          200:
+            body:
+              application/json:
+                example: |
+                  {
+
+                  }
+
+      put:
+        is: [auth: {roles: ''} ]
+        description: modifie un problème
+        responses:
+          200:
+            body:
+              application/json:
+                example: |
+                  {
+
+                  }
+      delete:
+        is: [auth: {roles: ''} ]
+        description: suppresion d'un problème
+        responses:
+          200:
+            body:
+              application/json:
+                example: |
+                  {
+
+                  }
+
+      /action:
+
+
+        get:
+          is: [auth: {roles: ''} ]
+          description: affiche toutes les actions pour une issue
+          responses:
+            200:
+              body:
+                application/json:
+                  example: |
+                    {
+
+                    }
+        post:
+          is: [auth: {roles: ''} ]
+          description: ajout d'une action pour une issue
+          responses:
+            200:
+              body:
+                application/json:
+                  example: |
+                    {
+
+                    }
+/issueTypes:
+
+
+  get:
+    is: [auth: {roles: ''} ]
+    description: renvoye tous les types de problèmes
+    responses:
+      200:
+        body:
+          application/json:
+            example: |
+              {
+
+              }
+  post:
+    is: [auth: {roles: ''} ]
+    description: permet de créer un nouveau type de problème
+    responses:
+      200:
+        body:
+          application/json:
+            example: |
+              {
+
+              }
+  /{id}:
+
+
+    get:
+      is: [auth: {roles: ''} ]
+      description: récupère un type de problème selon id
+      responses:
+        200:
+          body:
+            application/json:
+              example: |
+                {
+
+                }
+    delete:
+      is: [auth: {roles: ''} ]
+      description: supprime un type de problème selon id
+      responses:
+        200:
+          body:
+            application/json:
+              example: |
+                {
+
+                }
+/action:
+
+
+  get:
+    is: [auth: {roles: ''} ]
+    description: renvoie l'entier des actions
+    responses:
+      200:
+        body:
+          application/json:
+            example: |
+              {
+
+              }
+  put:
+    is: [auth: {roles: ''} ]
+    description: permet de modififier une action
+    responses:
+      200:
+        body:
+          application/json:
+            example: |
+              {
+
+              }
+
 /data:
-  description: Data resource.
+
   /populate:
     post:
       description: Allow to populate random data to have a starting situation.
