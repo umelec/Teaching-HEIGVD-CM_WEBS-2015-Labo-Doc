@@ -41,7 +41,7 @@ traits:
                 ...
               ]
   post:
-    description: Create a new user2.
+    description: Create a new user.
     body:
       application/json:
         example: |
@@ -59,13 +59,7 @@ traits:
           application/json:
             example: |
               {
-                "id": "54d8ae163fd30364605c81a4",
-                "firstname": "Romain",
-                "lastname": "Terieur",
-                "phone": "+6624582",
-                "roles": [
-                  "citizen"
-                ]
+                "id": "users/54d8ae163fd30364605c81a4"
               }
 
   /{id}:
@@ -106,13 +100,7 @@ traits:
             application/json:
               example: |
                 {
-                  "id": "54d8ae163fd30364605c81a4",
-                  "firstname": "Romain",
-                  "lastname": "Terieur",
-                  "phone": "+6624582",
-                  "roles": [
-                    "citizen"
-                  ]
+                  "url": "users/54d8ae163fd30364605c81a4"
                 }
     delete:
       is: [auth: {roles: 'staff'} ]
@@ -125,25 +113,28 @@ traits:
   description: Issue that have been reported.
   get:
     is: [auth: {roles: 'any'} ]
-    description: liste tous les problèmes
+    description: List issues that have been reported.
     responses:
       200:
         body:
           application/json:
             example: |
               {
+                "id": "54d8ae163fd30364605c81a4",
                 "author": "Romain Terreur (user)",
                 "IssueType": "131 (issueType)",
                 "description": "Lampadaire tombé par terre",
-                "GéoCordonnées":"",
+                "GéoCordonnées":"45.7686;57.66646",
                 "status": "ouvert",
                 "roles": [
-                  "citizen" ]
+                  "citizen" ],
+                "actions": [ "54d8ae163fd30364605c81a4", "54d8ae163fd30364605c81a4"
+                  ]
               }
 
   post:
     is: [auth: {roles: 'any'} ]
-    description: créer un problème
+    description: Create a new issue.
     body:
       application/json:
         example: |
@@ -151,25 +142,25 @@ traits:
             "author": "Romain Terreur (user)",
             "IssueType": "131 (issueType)",
             "description": "Lampadaire tombé par terre",
-            "GéoCordonnées":"",
+            "GéoCordonnées":"45.7686;57.66646",
             "status": "ouvert",
             "roles": [
               "citizen"]
           }
     responses:
-      200:
+      201:
         body:
           application/json:
             example: |
               {
-
+                "url": "issues/54d8ae163fd30364605c81a4"
               }
 
   /{id}:
 
     get:
       is: [auth: {roles: 'any'} ]
-      description: affiche un problème selon id
+      description: Get a specific issue.
       responses:
         200:
           body:
@@ -179,15 +170,17 @@ traits:
                   "author": "Romain Terreur (user)",
                   "IssueType": "131 (issueType)",
                   "description": "Lampadaire tombé par terre",
-                  "GéoCordonnées":"",
+                  "GéoCordonnées":"45.7686;57.66646",
                   "status": "ouvert",
                   "roles": [
-                    "citizen"]
+                    "citizen"],
+                  "actions": [ "54d8ae163fd30364605c81a4", "54d8ae163fd30364605c81a4"
+                  ]
                 }
 
     put:
       is: [auth: {roles: 'staff, user'} ]
-      description: modifie un problème
+      description: Update a issue.
       body:
         application/json:
           example: |
@@ -195,10 +188,12 @@ traits:
               "author": "Romain Terreur (user)",
               "IssueType": "131 (issueType)",
               "description": "Lampadaire tombé par terre",
-              "GéoCordonnées":"",
+              "GéoCordonnées":"45.7686;57.66646",
               "status": "ouvert",
               "roles": [
-                "citizen"]
+                "citizen"],
+              "actions": [ "54d8ae163fd30364605c81a4", "54d8ae163fd30364605c81a4"
+              ]
             }
       responses:
         200:
@@ -206,87 +201,92 @@ traits:
             application/json:
               example: |
                 {
-
+                  "url": "issues/54d8ae163fd30364605c81a4"
                 }
     delete:
       is: [auth: {roles: 'staff, user'} ]
-      description: suppresion d'un problème
+      description: Drop issues.
       responses:
-        200:
+        204:
           body:
-            application/json:
-              example: |
-                {
-                }
 
     /action:
 
       get:
         is: [auth: {roles: 'any'} ]
-        description: affiche toutes les actions pour une issue
+        description: Show an all actions for an issue.
         responses:
           200:
             body:
               application/json:
                 example: |
                   {
-
+                    "id": "54d8ae163fd30364605c81a4",
+                    "author": "Jean-marc Delessert",
+                    "date": "07-02-15",
+                    "comment": "Brought the broken lamp to the dump"
                   }
       post:
         is: [auth: {roles: 'staff'} ]
-        description: ajout d'une action pour une issue
+        description: Add a action ton a certain issue.
         body:
           application/json:
             example: |
               {
-
+                "id": "54d8ae163fd30364605c81a4",
+                "author": "Jean-marc Delessert",
+                "date": "07-02-15",
+                "comment": "Brought the broken lamp to the dump"
               }
         responses:
-          200:
+          201:
             body:
               application/json:
                 example: |
                   {
-
+                    "url": "action/54d8ae163fd30364605c81a4"
                   }
 /issueTypes:
   description: List of the type of issues.
   get:
     is: [auth: {roles: 'any'} ]
-    description: renvoye tous les types de problèmes
+    description: Show all issuetypes.
     responses:
       200:
         body:
           application/json:
             example: |
               {
-
+               "id": "54d8ae163fd30364605c81a4",
+               "name": "Broken stuff"
               }
   post:
     is: [auth: {roles: 'staff'} ]
-    description: permet de créer un nouveau type de problème
+    description: Create a new issuetype.
     body:
       application/json:
         example: |
           {
-
+            "id": "54d8ae163fd30364605c81a4",
+            "name": "Broken stuff"
           }
     responses:
-      200:
+      201:
         body:
           application/json:
             example: |
               {
-
+                "url": "issuestypes/54d8ae163fd30364605c81a4"
               }
   put:
     is: [auth: {roles: 'staff'} ]
-    description: permet de créer un nouveau type de problème
+    description: Update an issuetype.
     body:
       application/json:
         example: |
           {
-
+            "id": "54d8ae163fd30364605c81a4",
+            "name": "Broken stuff"
           }
     responses:
       200:
@@ -294,53 +294,57 @@ traits:
           application/json:
             example: |
               {
-
+               "url": "issuestypes/54d8ae163fd30364605c81a4"
               }
   /{id}:
 
 
     get:
       is: [auth: {roles: 'any'} ]
-      description: récupère un type de problème selon id
+      description: Show a issuetype on id.
       responses:
         200:
           body:
             application/json:
               example: |
                 {
-
+                  "id": "54d8ae163fd30364605c81a4",
+                  "name": "Broken stuff"
                 }
     delete:
       is: [auth: {roles: 'staff'} ]
-      description: supprime un type de problème selon id
+      description: Drop a issuetype.
       responses:
-        200:
+        204:
           body:
-            application/json:
-              example: |
-                {
-                }
+
 /actions:
-  description: Actions that have been done to resolve issues
+  description: Actions that have been done to resolve issues.
   get:
     is: [auth: {roles: 'staff'} ]
-    description: renvoie l'entier des actions
+    description: Show all actions.
     responses:
       200:
         body:
           application/json:
             example: |
               {
-
+                "id": "54d8ae163fd30364605c81a4",
+                "author": "Jean-marc Delessert",
+                "date": "07-02-15",
+                "comment": "Brought the broken lamp to the dump"
               }
   put:
     is: [auth: {roles: 'staff'} ]
-    description: permet de modififier une action
+    description: Update an action.
     body:
       application/json:
         example: |
           {
-
+            "id": "54d8ae163fd30364605c81a4",
+            "author": "Jean-marc Delessert",
+            "date": "07-02-15",
+            "comment": "Brought the broken lamp to the dump"
           }
     responses:
       200:
@@ -348,11 +352,11 @@ traits:
           application/json:
             example: |
               {
-
+                "url": "actions/54d8ae163fd30364605c81a4"
               }
 
 /data:
-
+  description: Permit to populate users.
   /populate:
     post:
       is: [auth: {roles: 'any'}]
