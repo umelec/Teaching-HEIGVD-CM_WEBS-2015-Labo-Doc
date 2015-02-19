@@ -122,9 +122,9 @@ traits:
               {
                 "id": "54d8ae163fd30364605c81a4",
                 "author": "Romain Terreur (user)",
-                "IssueType": "131 (issueType)",
+                "issueType": "131 (issueType)",
                 "description": "Lampadaire tombé par terre",
-                "GéoCordonnées":"45.7686;57.66646",
+                "geoCordonnee":"45.7686;57.66646",
                 "status": "ouvert",
                 "roles": [
                   "citizen" ],
@@ -140,9 +140,9 @@ traits:
         example: |
           {
             "author": "Romain Terreur (user)",
-            "IssueType": "131 (issueType)",
+            "issueType": "131 (issueType)",
             "description": "Lampadaire tombé par terre",
-            "GéoCordonnées":"45.7686;57.66646",
+            "geoCordonnee":"45.7686;57.66646",
             "status": "ouvert",
             "roles": [
               "citizen"]
@@ -168,9 +168,9 @@ traits:
               example: |
                 {
                   "author": "Romain Terreur (user)",
-                  "IssueType": "131 (issueType)",
+                  "issueType": "131 (issueType)",
                   "description": "Lampadaire tombé par terre",
-                  "GéoCordonnées":"45.7686;57.66646",
+                  "geoCordonnee":"45.7686;57.66646",
                   "status": "ouvert",
                   "roles": [
                     "citizen"],
@@ -186,9 +186,9 @@ traits:
           example: |
             {
               "author": "Romain Terreur (user)",
-              "IssueType": "131 (issueType)",
+              "issueType": "131 (issueType)",
               "description": "Lampadaire tombé par terre",
-              "GéoCordonnées":"45.7686;57.66646",
+              "geoCordonnee":"45.7686;57.66646",
               "status": "ouvert",
               "roles": [
                 "citizen"],
@@ -258,7 +258,7 @@ traits:
             example: |
               {
                "id": "54d8ae163fd30364605c81a4",
-               "name": "Broken stuff"
+               "shortName": "Broken stuff"
               }
   post:
     is: [auth: {roles: 'staff'} ]
@@ -268,7 +268,7 @@ traits:
         example: |
           {
             "id": "54d8ae163fd30364605c81a4",
-            "name": "Broken stuff"
+            "shortName": "Broken stuff"
           }
     responses:
       201:
@@ -286,7 +286,7 @@ traits:
         example: |
           {
             "id": "54d8ae163fd30364605c81a4",
-            "name": "Broken stuff"
+            "shortName": "Broken stuff"
           }
     responses:
       200:
@@ -309,7 +309,7 @@ traits:
               example: |
                 {
                   "id": "54d8ae163fd30364605c81a4",
-                  "name": "Broken stuff"
+                  "shortNname": "Broken stuff"
                 }
     delete:
       is: [auth: {roles: 'staff'} ]
