@@ -124,7 +124,7 @@ traits:
                 "author": "Romain Terreur (user)",
                 "issueType": "131 (issueType)",
                 "description": "Lampadaire tombé par terre",
-                "geoCordonnee":"45.7686;57.66646",
+                "geoCoordonnee":"45.7686;57.66646",
                 "status": "ouvert",
                 "roles": [
                   "citizen" ],
@@ -142,10 +142,8 @@ traits:
             "author": "Romain Terreur (user)",
             "issueType": "131 (issueType)",
             "description": "Lampadaire tombé par terre",
-            "geoCordonnee":"45.7686;57.66646",
-            "status": "ouvert",
-            "roles": [
-              "citizen"]
+            "geoCoordonnee":"45.7686;57.66646",
+            "status": "ouvert"
           }
     responses:
       201:
@@ -170,7 +168,7 @@ traits:
                   "author": "Romain Terreur (user)",
                   "issueType": "131 (issueType)",
                   "description": "Lampadaire tombé par terre",
-                  "geoCordonnee":"45.7686;57.66646",
+                  "geoCoordonnee":"45.7686;57.66646",
                   "status": "ouvert",
                   "roles": [
                     "citizen"],
@@ -188,7 +186,7 @@ traits:
               "author": "Romain Terreur (user)",
               "issueType": "131 (issueType)",
               "description": "Lampadaire tombé par terre",
-              "geoCordonnee":"45.7686;57.66646",
+              "geoCoordonnee":"45.7686;57.66646",
               "status": "ouvert",
               "roles": [
                 "citizen"],
@@ -278,26 +276,26 @@ traits:
               {
                 "url": "issuestypes/54d8ae163fd30364605c81a4"
               }
-  put:
-    is: [auth: {roles: 'staff'} ]
-    description: Update an issuetype.
-    body:
-      application/json:
-        example: |
-          {
-            "id": "54d8ae163fd30364605c81a4",
-            "shortName": "Broken stuff"
-          }
-    responses:
-      200:
-        body:
-          application/json:
-            example: |
-              {
-               "url": "issuestypes/54d8ae163fd30364605c81a4"
-              }
-  /{id}:
 
+  /{id}:
+    put:
+      is: [auth: {roles: 'staff'} ]
+      description: Update an issuetype.
+      body:
+        application/json:
+          example: |
+            {
+              "id": "54d8ae163fd30364605c81a4",
+              "shortName": "Broken stuff"
+            }
+      responses:
+        200:
+          body:
+            application/json:
+              example: |
+                {
+                 "url": "issuestypes/54d8ae163fd30364605c81a4"
+                }
 
     get:
       is: [auth: {roles: 'any'} ]
@@ -334,26 +332,27 @@ traits:
                 "date": "07-02-15",
                 "comment": "Brought the broken lamp to the dump"
               }
-  put:
-    is: [auth: {roles: 'staff'} ]
-    description: Update an action.
-    body:
-      application/json:
-        example: |
-          {
-            "id": "54d8ae163fd30364605c81a4",
-            "author": "Jean-marc Delessert",
-            "date": "07-02-15",
-            "comment": "Brought the broken lamp to the dump"
-          }
-    responses:
-      200:
-        body:
-          application/json:
-            example: |
-              {
-                "url": "actions/54d8ae163fd30364605c81a4"
-              }
+  /{id}:
+    put:
+      is: [auth: {roles: 'staff'} ]
+      description: Update an action.
+      body:
+        application/json:
+          example: |
+            {
+              "id": "54d8ae163fd30364605c81a4",
+              "author": "Jean-marc Delessert",
+              "date": "07-02-15",
+              "comment": "Brought the broken lamp to the dump"
+            }
+      responses:
+        200:
+          body:
+            application/json:
+              example: |
+                {
+                  "url": "actions/54d8ae163fd30364605c81a4"
+                }
 
 /data:
   description: Permit to populate users.
