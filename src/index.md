@@ -1,6 +1,6 @@
 ---
 title: Awesome API
-baseline: coucou
+baseline: myAwesomeBaseline
 template: landing.jade
 menuIndex: 1
 ---
