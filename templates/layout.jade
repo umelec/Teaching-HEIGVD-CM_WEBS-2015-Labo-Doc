@@ -1,5 +1,6 @@
 doctype html
 html
+	block link
 	head
 		title= title
 		meta(charset='utf8')
@@ -16,7 +17,7 @@ html
 
 	body
 
-		nav.navbar.navbar-default(role="navigation")
+		nav.navbar.navbar-default.navbar-fixed-top(role="navigation")
 			.container
 				.navbar-header
 					button.navbar-toggle.collapsed(type="button", data-toggle="collapse", data-target="#navbarcollapse")
@@ -36,26 +37,12 @@ html
 									| #{s.sectionName}
 									if s.private
 										i.glyphicon.glyphicon-lock
-		.container
-			.row
-				.col-sm-3.col-sm-push-9
-					block menu
-						if section && subsections[section]
-							h1 Sections
-							hr
-							ul.nav.subnav
-								for subsection in subsections[section]
-									li(class="#{ title == subsection.title ? 'active' : '' }")
-										a(href=subsection.link)
-											| #{subsection.title}
-											if subsection.private
-												i.glyphicon.glyphicon-lock
-				.col-sm-9.col-sm-pull-3
-					a(id="top")
-					h1= title
-					hr
-					block body
-						div!= contents
+		
+		block mainContent	
+
+		block landingPage
+								
+		
 
 		.footer
 			.container

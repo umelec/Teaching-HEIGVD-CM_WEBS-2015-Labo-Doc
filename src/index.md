@@ -1,6 +1,6 @@
 ---
-title: Welcome
-template: layout.jade
+title: Awesome API
+template: landing.jade
 menuIndex: 1
 ---
 
@@ -15,5 +15,4 @@ Each citizen is able to submit any issue he disovers in the city and then a staf
 take care of this issue to solve it.
 
 You will discover on this website the marvelous [API documentation](/api) and the [epic stories](/blog)
-
 
