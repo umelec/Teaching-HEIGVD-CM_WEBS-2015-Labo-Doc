@@ -20,7 +20,7 @@ traits:
             example: |
               [
                 {
-                  "id": "54d8ae163fd30364605c81a4",
+                  "id": "http://localhost:8080/api/users/54f34c7d8b5e357ca1484c3c",
                   "firstname": "Romain",
                   "lastname": "Terieur",
                   "phone": "+6624582",
@@ -29,7 +29,7 @@ traits:
                   ]
                 },
                 {
-                  "id": "54d8ae163fd30364605c81a9",
+                  "id": "http://localhost:8080/api/users/54f34c7d8b5e357ca1484c3c",
                   "firstname": "Romain",
                   "lastname": "Terieur",
                   "phone": "+8211332",
@@ -59,8 +59,15 @@ traits:
           application/json:
             example: |
               {
-                "id": "users/54d8ae163fd30364605c81a4"
-              }
+                "id": "http://localhost:8080/api/users/54f34c7d8b5e357ca1484c3c",
+                "firstname": "Romain",
+                "lastname": "Terieur",
+                "phone": "+8211332",
+                "roles": [
+                  "citizen",
+                  "staff"
+                ]
+              },
 
   /{id}:
     get:
@@ -72,7 +79,7 @@ traits:
             application/json:
               example: |
                 {
-                  "id": "54d8ae163fd30364605c81a4",
+                  "id": "http://localhost:8080/api/users/54d8ae163fd30364605c81a4",
                   "firstname": "Romain",
                   "lastname": "Terieur",
                   "phone": "+6624582",
@@ -100,7 +107,13 @@ traits:
             application/json:
               example: |
                 {
-                  "url": "users/54d8ae163fd30364605c81a4"
+                  "id": "http://localhost:8080/api/users/54d8ae163fd30364605c81a4",
+                  "firstname": "Romain",
+                  "lastname": "Terieur",
+                  "phone": "+6624582",
+                  "roles": [
+                    "citizen"
+                  ]
                 }
     delete:
       is: [auth: {roles: 'staff'} ]
@@ -120,7 +133,7 @@ traits:
           application/json:
             example: |
               {
-                "id": "54d8ae163fd30364605c81a4",
+                "id": "http://localhost:8080/api/issues/54d8ae163fd30364605c81a4",
                 "author": "Romain Terreur (user)",
                 "issueType": "131 (issueType)",
                 "description": "Lampadaire tombé par terre",
@@ -130,7 +143,20 @@ traits:
                   "citizen" ],
                 "actions": [ "54d8ae163fd30364605c81a4", "54d8ae163fd30364605c81a4"
                   ]
-              }
+              },
+              {
+                "id": "http://localhost:8080/api/issues/54d8ae163fd30364605c81a4",
+                "author": "Romain Terreur (user)",
+                "issueType": "131 (issueType)",
+                "description": "Lampadaire tombé par terre",
+                "geoCoordonnee":"45.7686;57.66646",
+                "status": "ouvert",
+                "roles": [
+                  "citizen" ],
+                "actions": [ "54d8ae163fd30364605c81a4", "54d8ae163fd30364605c81a4"
+                  ]
+              },
+              ...
 
   post:
     is: [auth: {roles: 'any'} ]
@@ -151,7 +177,16 @@ traits:
           application/json:
             example: |
               {
-                "url": "issues/54d8ae163fd30364605c81a4"
+                "id": "http://localhost:8080/api/issues/54d8ae163fd30364605c81a4",
+                "author": "Romain Terreur (user)",
+                "issueType": "131 (issueType)",
+                "description": "Lampadaire tombé par terre",
+                "geoCoordonnee":"45.7686;57.66646",
+                "status": "ouvert",
+                "roles": [
+                  "citizen" ],
+                "actions": [ "54d8ae163fd30364605c81a4", "54d8ae163fd30364605c81a4"
+                  ]
               }
 
   /{id}:
@@ -165,6 +200,7 @@ traits:
             application/json:
               example: |
                 {
+                  "id": "http://localhost:8080/api/issues/54d8ae163fd30364605c81a4"
                   "author": "Romain Terreur (user)",
                   "issueType": "131 (issueType)",
                   "description": "Lampadaire tombé par terre",
@@ -199,7 +235,16 @@ traits:
             application/json:
               example: |
                 {
-                  "url": "issues/54d8ae163fd30364605c81a4"
+                  "id": "http://localhost:8080/api/issues/54d8ae163fd30364605c81a4"
+                  "author": "Romain Terreur (user)",
+                  "issueType": "131 (issueType)",
+                  "description": "Lampadaire tombé par terre",
+                  "geoCoordonnee":"45.7686;57.66646",
+                  "status": "ouvert",
+                  "roles": [
+                    "citizen"],
+                  "actions": [ "54d8ae163fd30364605c81a4", "54d8ae163fd30364605c81a4"
+                  ]
                 }
     delete:
       is: [auth: {roles: 'staff, user'} ]
@@ -219,11 +264,18 @@ traits:
               application/json:
                 example: |
                   {
-                    "id": "54d8ae163fd30364605c81a4",
+                    "id": "http://localhost:8080/api/actions/54d8ae163fd30364605c81a4",
+                    "author": "Jean-marc Delessert",
+                    "date": "07-02-15",
+                    "comment": "Brought the broken lamp to the dump"
+                  },
+                  {
+                    "id": "http://localhost:8080/api/actions/54d8ae163fd30364605c81a4",
                     "author": "Jean-marc Delessert",
                     "date": "07-02-15",
                     "comment": "Brought the broken lamp to the dump"
                   }
+                  ...
       post:
         is: [auth: {roles: 'staff'} ]
         description: Add a action ton a certain issue.
@@ -231,7 +283,6 @@ traits:
           application/json:
             example: |
               {
-                "id": "54d8ae163fd30364605c81a4",
                 "author": "Jean-marc Delessert",
                 "date": "07-02-15",
                 "comment": "Brought the broken lamp to the dump"
@@ -242,7 +293,10 @@ traits:
               application/json:
                 example: |
                   {
-                    "url": "action/54d8ae163fd30364605c81a4"
+                    "id": "http://localhost:8080/api/actions/54d8ae163fd30364605c81a4",
+                    "author": "Jean-marc Delessert",
+                    "date": "07-02-15",
+                    "comment": "Brought the broken lamp to the dump"
                   }
 /issueTypes:
   description: List of the type of issues.
@@ -255,9 +309,14 @@ traits:
           application/json:
             example: |
               {
-               "id": "54d8ae163fd30364605c81a4",
+               "id": "http://localhost:8080/api/IssuesTypes/54d8ae163fd30364605c81a4",
                "shortName": "Broken stuff"
-              }
+              },
+              {
+               "id": "http://localhost:8080/api/IssuesTypes/54d8ae163fd30364605c81a4",
+               "shortName": "Broken stuff"
+              },
+              ...
   post:
     is: [auth: {roles: 'staff'} ]
     description: Create a new issuetype.
@@ -265,7 +324,6 @@ traits:
       application/json:
         example: |
           {
-            "id": "54d8ae163fd30364605c81a4",
             "shortName": "Broken stuff"
           }
     responses:
@@ -274,7 +332,8 @@ traits:
           application/json:
             example: |
               {
-                "url": "issuestypes/54d8ae163fd30364605c81a4"
+               "id": "http://localhost:8080/api/IssuesTypes/54d8ae163fd30364605c81a4",
+               "shortName": "Broken stuff"
               }
 
   /{id}:
@@ -285,7 +344,6 @@ traits:
         application/json:
           example: |
             {
-              "id": "54d8ae163fd30364605c81a4",
               "shortName": "Broken stuff"
             }
       responses:
@@ -294,7 +352,8 @@ traits:
             application/json:
               example: |
                 {
-                 "url": "issuestypes/54d8ae163fd30364605c81a4"
+                  "id": "http://localhost:8080/api/IssuesTypes/54d8ae163fd30364605c81a4",
+                  "shortName": "Broken stuff"
                 }
 
     get:
@@ -306,7 +365,7 @@ traits:
             application/json:
               example: |
                 {
-                  "id": "54d8ae163fd30364605c81a4",
+                  "id": ""http://localhost:8080/api/IssuesTypes/54d8ae163fd30364605c81a4",
                   "shortNname": "Broken stuff"
                 }
     delete:
@@ -327,11 +386,18 @@ traits:
           application/json:
             example: |
               {
-                "id": "54d8ae163fd30364605c81a4",
+                "id": ""http://localhost:8080/api/Actions/54d8ae163fd30364605c81a4",
                 "author": "Jean-marc Delessert",
                 "date": "07-02-15",
                 "comment": "Brought the broken lamp to the dump"
-              }
+              },
+              {
+                "id": ""http://localhost:8080/api/Actions/54d8ae163fd30364605c81a4",
+                "author": "Jean-marc Delessert",
+                "date": "07-02-15",
+                "comment": "Brought the broken lamp to the dump"
+              },
+              ...
   /{id}:
     put:
       is: [auth: {roles: 'staff'} ]
@@ -340,7 +406,6 @@ traits:
         application/json:
           example: |
             {
-              "id": "54d8ae163fd30364605c81a4",
               "author": "Jean-marc Delessert",
               "date": "07-02-15",
               "comment": "Brought the broken lamp to the dump"
@@ -351,7 +416,10 @@ traits:
             application/json:
               example: |
                 {
-                  "url": "actions/54d8ae163fd30364605c81a4"
+                  "id": ""http://localhost:8080/api/Actions/54d8ae163fd30364605c81a4",
+                  "author": "Jean-marc Delessert",
+                  "date": "07-02-15",
+                  "comment": "Brought the broken lamp to the dump"
                 }
 
 /data:
