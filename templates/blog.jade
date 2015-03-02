@@ -10,12 +10,13 @@ block append body
 				h3.panel-title
 					unless blogentry.public
 						span.glyphicon.glyphicon-lock
-					=blogentry.title 
-					span(class="date")=blogentry.date
+					=blogentry.title
+					br
+					span.date=blogentry.date
 
 					
 			.panel-body!=blogentry.contents
-				p(class="author") Created by: 
+				p.author Created by: 
 
 					=blogentry.author
 					
