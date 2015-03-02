@@ -1,6 +1,6 @@
 ---
-title: Awesome API
-baseline: myAwesomeBaseline
+title: Smart City
+baseline: This city needs you... become a hero and fix it !
 template: landing.jade
 menuIndex: 1
 ---
